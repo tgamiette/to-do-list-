@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import List from "./List";
+import Form from "./FormList";
+import {useState} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+  const [lists, setLists] = useState([{
+    id: 1, titre: "Titre1", description: "Description1", status:"pending",
+  }, {
+    id: 2, titre: "Titre2", description: "Description2", status:"pending"
+  }, {
+    id: 3, titre: "Titre3", description: "Description3", status:"pending"
+  }, {
+    id: 4, titre: "Titre4", description: "Description4",status:"pending"
+  }])
+  return (<div className="App">
+    <Form setLists={setLists}/>
+    {lists.map((list) => (
+      <List setLists={setLists} Title={list.title} Description={list.description} key={list.id} id={list.id} status={list.status}/>))}
+  </div>);
 }
 
 export default App;
