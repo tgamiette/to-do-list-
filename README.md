@@ -1,3 +1,11 @@
+# ToDo List 
+Blocage apres 10 non réalisé -> Ok
+changement de couleur suite à la réalisation de la tache -> OK
+
+## Available Scripts
+
+In the project directory, you can run:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

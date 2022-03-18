@@ -19,18 +19,18 @@ export default function List({Title, Description, id, setLists, status}) {
   return (
     <div className={'card mb-3 border-' + classname} style={{maxWidth: 150}}>
       <div className="card-header">{status}</div>
-       <div className={"card-body text-" + classname}>
-       <h5 className="card-title">{Title}</h5>
-       <p className="card-text">{Description}</p>
-       </div>
-        <button value={id} className={"btn btn-dark"} onClick={() => {
-          Done(setLists, id)
-        }}>Tache Terminé
-        </button>
-        <button value={id} className={"btn btn-dark"} onClick={() => {
-          Delete(setLists, id)
-        }}>Supprimer
-        </button>
+      <div className={"card-body text-" + classname}>
+        <h5 className="card-title">{Title}</h5>
+        <p className="card-text">{Description}</p>
+      </div>
+      <button value={id} className={"btn btn-" + classname} onClick={() => {
+        Done(setLists, id)
+      }}>Tache Terminé
+      </button>
+      <button value={id} className={"btn btn-light"} onClick={() => {
+        Delete(setLists, id)
+      }}>Supprimer
+      </button>
     </div>
   )
     ;
