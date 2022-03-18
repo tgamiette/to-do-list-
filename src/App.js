@@ -18,6 +18,7 @@ function App() {
   }])
   return (<div className="App">
     <Form setLists={setLists}/>
+
     {lists.map((list) => (
       <List setLists={setLists} Title={list.title} Description={list.description} key={list.id} id={list.id} status={list.status}/>))}
   </div>);

@@ -2,6 +2,7 @@ import react, {Component} from "react";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 export default class Form extends Component {
+  nb_max = 10
   setLists = this.props.setLists;
   getDescription = (e) => {
     this.setState({description: e.target.value})
@@ -11,18 +12,31 @@ export default class Form extends Component {
   }
 
   //TODO faut m'expliquer la
-  handleSubmit(event){
+  result = 0;
+
+  handleSubmit(event) {
 
     event.preventDefault();
 
-    const newItem={
+    const newItem = {
       id: generateUniqueID(),
       title: this.state.title,
       description: this.state.description,
       status: "pending"
     };
     // throw new Error(newItem)
-    this.setLists(prev=> [...prev,newItem]);
+
+    this.setLists(prev => {
+      const result = prev.filter(task => task.status === 'pending')
+      console.log(result.length)
+      console.log(this.nb_max)
+      if ((result.length) <= (this.nb_max)) {
+        return [...prev, newItem]
+      } else {
+        alert("fini d'abord")
+        return prev
+      }
+    });
   }
 
   constructor(props) {
@@ -31,7 +45,7 @@ export default class Form extends Component {
       title: "",
       description: ""
     }
-    this.handleSubmit=this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
@@ -46,7 +60,7 @@ export default class Form extends Component {
           <input type="text" className="form-control" id="Description" placeholder="Précision sur la tâche"
                  onChange={this.getDescription}/>
         </div>
-        <button className="btn btn-primary" type="submit" >Ajouter</button>
+        <button className="btn btn-primary" type="submit">Ajouter</button>
       </form>
     );
   }

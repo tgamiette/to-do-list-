@@ -1,4 +1,7 @@
+import './App.css'
+
 export default function List({Title, Description, id, setLists, status}) {
+
   return (
     <div className="col-sm-6">
       <div className="card">
