@@ -28,8 +28,8 @@ export default class Form extends Component {
 
     this.setLists(prev => {
       const result = prev.filter(task => task.status === 'pending')
-      console.log(result.length)
-      console.log(this.nb_max)
+      // console.log(result.length)
+      // console.log(this.nb_max)
       if ((result.length) <= (this.nb_max)) {
         return [...prev, newItem]
       } else {
